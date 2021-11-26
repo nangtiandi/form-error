@@ -9,6 +9,10 @@ use App\Http\Requests\UpdateArticleRequest;
 
 class ArticleController extends Controller
 {
+    public function api(){
+        $arr = Article::all();
+        return response($arr,200);
+    }
     /**
      * Display a listing of the resource.
      *

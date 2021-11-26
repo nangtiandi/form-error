@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ArticleFactory extends Factory
@@ -14,7 +15,9 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title'=>$this->faker->realText(50),
+            'category_id'=>Category::all()->random()->id,
+            'description'=>$this->faker->realText(500),
         ];
     }
 }
