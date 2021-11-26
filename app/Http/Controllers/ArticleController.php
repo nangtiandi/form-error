@@ -95,6 +95,11 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        $validated = $request->validate([
+            'title' => 'required','min:3',
+            'category_id' => "required",
+            'description' => 'required','min:10','max:300'
+        ]);
         $categories = Category::all();
         $articles = Article::all();
         $article->title = $request->title;

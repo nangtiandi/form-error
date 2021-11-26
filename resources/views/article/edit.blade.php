@@ -7,12 +7,21 @@
                 @if (session('status'))
                     <p class="alert alert-success">{{session('status')}}</p>
                 @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action=" {{route('article.update',$article->id)}} " method="POST">
                     @csrf
                     @method('put')
                     <div class="mb-3">
                         <label for="" class="form-label">Title</label>
-                        <input type="text" class="form-control" name="title" value="{{$article->title}}">
+                        <input type="text" class="form-control" name="title" value="{{old('title',$article->title)}}">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Category</label>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Factories\ArticleFactory;
 
 class ArticleSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $this->call(ArticleFactory::class);
     }
 }
